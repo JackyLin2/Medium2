@@ -17,12 +17,4 @@ class AuthController < ActionController
             render json: {errors: "No User Logged In"} # return an error
         end
     end
-
-    def session_user
-        decoded_hash = decoded_token # decoded_hash is the return value of the decoded_token method
-        if !decoded_hash.empty? # if it is not empty
-            user_id = decoded_hash[0]['user_id'] # take the information from the decoded hash array
-            @user = User.find_by(id: user_id)
-        end
-    end
 end
